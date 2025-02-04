@@ -14,8 +14,8 @@ func main() {
 
 	// Make sure the user has provided the correct number of arguments
 	if len(os.Args) < 3 {
-		fmt.Println("Usage: UploadData <file_path> <file_extension> [bucket_name] [folder_name] [region]")
-		fmt.Println("Example: UploadData /path/to/daily.xml xml my-bucket optional-folder us-east-2")
+		fmt.Println("Usage: UploadData <file_path> <file_extension>")
+		fmt.Println("Example: UploadData /path/to/daily.xml xml")
 		os.Exit(1)
 	}
 
