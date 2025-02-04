@@ -24,7 +24,7 @@ func main() {
 	// This is the file type, it must be either xml or json, I am checking below
 	fileType := os.Args[2]
 	// This is the bucket name that I already setup in my s3
-	var bucketName string = "s3-bucket-1"
+	var bucketName string = "first-project-cloud-1"
 
 	// Check if the file type is either xml or json
 	if fileType != "xml" && fileType != "json" {
