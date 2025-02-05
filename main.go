@@ -13,8 +13,8 @@ import (
 func main() {
 
 	// Make sure the user has provided the correct number of arguments
-	if len(os.Args) < 3 {
-		fmt.Println("Usage: UploadData <file_path> <file_extension>")
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: UploadData <file_path> <[optional]file_extension>")
 		fmt.Println("Example: UploadData /path/to/daily.xml xml")
 		os.Exit(1)
 	}
@@ -22,8 +22,24 @@ func main() {
 	// This is supposed to be the path, I will make sure it is a valid path below
 	fileLocation := os.Args[1]
 	// This is the file type, it must be either xml or json, I am checking below
-	fileType := os.Args[2]
-	// This is the bucket name that I already setup in my s3
+	fileType := ""
+	if len(os.Args) > 2 {
+		fileType = os.Args[2]
+	}
+
+	if fileType == "" {
+		/*
+		 * filepath.Ext returns the file extension of the file at the given path.
+		 * The [1:] is to remove the dot from the file extension.
+		 * [1:] take all characters from the string starting at index 1 until the end.
+		 */
+		fileType = filepath.Ext(fileLocation)[1:]
+	}
+
+	/*
+	 * This is the bucket name that I already setup in my s3
+	 * I hard coded it here for simplicity
+	 */
 	var bucketName string = "first-project-cloud-1"
 
 	// Check if the file type is either xml or json
