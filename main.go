@@ -81,7 +81,7 @@ func main() {
 		Body:        file,
 		ContentType: contentType,
 		Metadata: map[string]string{
-			"datatype": fileType,
+			"x-amz-meta-datatype": fileType,
 		},
 	})
 
