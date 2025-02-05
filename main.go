@@ -72,6 +72,9 @@ func main() {
 	case "json":
 		ct := "application/json"
 		contentType = &ct
+	default:
+		fmt.Println("Invalid file type")
+		os.Exit(1)
 	}
 
 	// Create a new S3 client
