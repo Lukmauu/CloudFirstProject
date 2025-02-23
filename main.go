@@ -14,7 +14,7 @@ func main() {
 
 	// Make sure the user has provided the correct number of arguments
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: UploadData <file_path> <[optional]file_extension>")
+		fmt.Println("Usage: UploadData <file_path> < [optional] file_extension>")
 		fmt.Println("Example: UploadData /path/to/daily.xml xml")
 		os.Exit(1)
 	}
@@ -100,9 +100,11 @@ func main() {
 		Body:        file,
 		ContentType: contentType,
 		Metadata: map[string]string{
-			"x-amz-meta-datatype": fileType,
+			"datatype": fileType,
 		},
 	})
+
+	//Qwerty6712..
 
 	// If there is an error uploading the file, print the error and exit
 	if err != nil {
