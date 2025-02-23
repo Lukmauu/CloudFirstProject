@@ -79,29 +79,11 @@ func main() {
 
 	objectKey := baseName
 
-	var contentType *string
-	switch fileType {
-	case "xml":
-		ct := "application/xml"
-		contentType = &ct
-
-	case "json":
-		ct := "application/json"
-		contentType = &ct
-	default:
-		fmt.Println("Invalid file type")
-		os.Exit(1)
-	}
-
 	// Create a new S3 client
 	_, err = s3Client.PutObject(context.TODO(), &s3.PutObjectInput{
-		Bucket:      &bucketName,
-		Key:         &objectKey,
-		Body:        file,
-		ContentType: contentType,
-		Metadata: map[string]string{
-			"datatype": fileType,
-		},
+		Bucket: &bucketName,
+		Key:    &objectKey,
+		Body:   file,
 	})
 
 	//Qwerty6712..
